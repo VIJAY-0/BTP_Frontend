@@ -1,0 +1,89 @@
+.raw-table-container {
+    overflow: auto;
+    max-height: 400px;
+    margin-top: 1rem;
+  }
+  
+  .raw-table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 12px;
+  }
+  
+  .raw-table th,
+  .raw-table td {
+    border: 1px solid #ccc;
+    padding: 4px 8px;
+    text-align: right;
+  }
+  
+  .raw-table th {
+    background-color: #f7f7f7;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  
+  .raw-table .index-cell {
+    text-align: center;
+    font-weight: bold;
+    background-color: #fafafa;
+  }
+
+
+  
+
+  .histogram-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 32px;
+    justify-content: center;
+    background: #f3f4f6;
+  }
+  
+  .histogram-card {
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 20px;
+    width: 280px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .histogram-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .histogram-title {
+    font-size: 1.25rem;
+    color: #111827;
+    margin-bottom: 12px;
+  }
+  
+  .histogram-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    object-fit: cover;
+  }
+  
+  .btn-download {
+    background: linear-gradient(to right, #6366f1, #3b82f6);
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .btn-download:hover {
+    background: linear-gradient(to right, #4f46e5, #2563eb);
+  }
+  
