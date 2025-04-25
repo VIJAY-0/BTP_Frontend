@@ -8,8 +8,10 @@ const RawContourTable = ({ rawMetrics }) => {
 
     console.log(rawMetrics)
   const histograms = rawMetrics.histogram_images
+  const units = rawMetrics.units
+
   rawMetrics = rawMetrics.parameters
-  const metricNames = Object.keys(rawMetrics);  
+  const metricNames = Object.keys(rawMetrics);
   const rowCount = rawMetrics[metricNames[0]].length;
 
   const handleDownloadExcel = () => {
@@ -52,7 +54,7 @@ const RawContourTable = ({ rawMetrics }) => {
           <tr>
             <th>Index</th>
             {metricNames.map((name) => (
-                <th key={name}>{name}</th>
+                <th key={name}>{name} {units[name]===''?units[name]:`(`+units[name]+`)`} </th>
             ))}
           </tr>
         </thead>

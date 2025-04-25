@@ -12,9 +12,12 @@ const downloadBase64Image = (base64Data, filename) => {
   };
   
 
-const ContourResults = ({ data }) => {
-  if (!data) return <p>Loading...</p>;
+const ContourResults = ({ data , image }) => {
+
+  if (!image) return <p>Upload an image to be processed</p>;
+  if (!data) return <div className="loader"></div>;
     // console.log(data)
+    
 
   return (
     <div className="contour-container">

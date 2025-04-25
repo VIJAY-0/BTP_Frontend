@@ -2,23 +2,21 @@ import React, { useState } from 'react';
 import Header from './components/Header';
 import UploadSection from './components/UploadSection';
 import ImagePreview from './components/ImagePreview';
-import ResultSection from './components/ResultSection';
 import Footer from './components/Footer';
 import DownloadReportButton from './components/DownloadReportButton'; // <-- Add this line
-import SetParams from './components/SetParams';
 import ContourResults from './components/RecievedResults';
 import RawContourTable from './components/Results/RawContour';
+import ClassVisualization from './components/ClassVisualisation';
 
 import './App.css';
 
   
 
-const BASE_URL = 'http://localhost:8000'; // Replace with your CORS server endpoint
+const BASE_URL = 'https://btp-backend-x24y.onrender.com'; // Replace with your CORS server endpoint
 
 const App = () => {
   const [image, setImage] = useState(null);
   const [result, setResult] = useState(null);
-  const [detectionParams, setDetectionParams] = useState({});
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
@@ -37,6 +35,8 @@ const App = () => {
           // mode: "no-cors",
         });
 
+        // setResult({'loading': true});
+        
         if (!response.ok) {
           throw new Error('Failed to upload image');
         }
@@ -52,17 +52,21 @@ const App = () => {
     }
   };
 
+  const handleReset = () => {
+    setImage(null);
+    setResult(null);
+  };
+
   return (
     <div className="app">
       <Header />
       <main className="main-content">
 
-        <UploadSection onImageUpload={handleImageUpload} />
+        <UploadSection onImageUpload={handleImageUpload} data={result} setdatanull={handleReset} />
         <ImagePreview file={image} />
-        <ContourResults data={result}/>
-        {/* <ResultSection result={sampleData} /> */}
+        <ContourResults data={result} image={image}/>
         <RawContourTable rawMetrics={result}/>
-        {/* <SetParams onParamsChange={setDetectionParams} /> */}
+        {result && <ClassVisualization branchingDist={result.branching_dist} />}
         {result && <DownloadReportButton results={result} />} {/* Add this */}
 
       </main>
